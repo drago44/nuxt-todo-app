@@ -6,13 +6,11 @@ export default defineEventHandler(async (e) => {
   const method = e.node.req.method;
 
   if (method === 'GET') {
-    console.log(db.todos);
     return db.todos;
   }
 
   if (method === 'POST') {
     const body = await readBody(e);
-    console.log(db.todos);
 
     if (!body.item) {
       const TodoNotFoundError = createError({
