@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const { data } = await useFetch('api/todo');
-
+  console.log(data);
 </script>
 
 <template>

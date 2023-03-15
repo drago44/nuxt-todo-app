@@ -1,6 +1,5 @@
 import { db, Todo } from '@/server/db';
 import { v4 as uuid } from 'uuid';
-import { sendError } from 'h3';
 
 export default defineEventHandler(async (e) => {
   const method = e.node.req.method;

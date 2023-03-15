@@ -1,13 +1,12 @@
-import { db } from '@/server/db';
-import { sendError } from 'h3';
+import { db, Todo } from '@/server/db';
 
 export default defineEventHandler((e) => {
   const method = e.node.req.method;
-  const context = e.context;
+  const context = e.context as { params: { id: string } };
   const { id } = context.params;
 
-  const findTodoById = (todoId) => {
-    let index;
+  const findTodoById = (todoId: string) => {
+    let index: number | undefined;
     const todo = db.todos.find((t, i) => {
       if (t.id === todoId) {
         index = i;
@@ -26,7 +25,7 @@ export default defineEventHandler((e) => {
       sendError(e, TodoNotFoundError);
     }
 
-    return { todo, index };
+    return { todo, index } as { todo: Todo; index: number };
   };
 
   if (method === 'PUT') {
