@@ -1,4 +1,4 @@
-import { db } from '@/server/db';
+import { db, Todo } from '@/server/db';
 import { v4 as uuid } from 'uuid';
 import { sendError } from 'h3';
 
@@ -22,7 +22,7 @@ export default defineEventHandler(async (e) => {
       sendError(e, TodoNotFoundError);
     }
 
-    const newTodo = {
+    const newTodo: Todo = {
       id: uuid(),
       item: body.item,
       completed: false,

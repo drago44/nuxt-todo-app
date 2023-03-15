@@ -1,7 +1,16 @@
 <script setup lang="ts">
-  const { data } = useFetch('api/todo');
+  const { data } = await useFetch('api/todo');
+
 </script>
 
 <template>
-  <div>{{ data }}</div>
+  <div>
+    <div class="c">{{ data }}</div>
+  </div>
 </template>
+
+<style>
+  .c {
+    color: aqua;
+  }
+</style>
